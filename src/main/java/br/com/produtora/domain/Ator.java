@@ -1,10 +1,13 @@
 package br.com.produtora.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -31,6 +34,9 @@ public class Ator {
 	@Size(max=500, message="A biografia do ator não pode ser maior que 500 caracteres!")
 	@NotEmpty(message="A biografia do ator é obrigatória!")
 	private String biografia;
+	
+	@ManyToMany(mappedBy="atores")
+	private List<Filme> filmes;
 
 	public Long getId() {
 		return id;
