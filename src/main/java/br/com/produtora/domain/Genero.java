@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Genero {
 	
@@ -27,6 +29,7 @@ public class Genero {
 	@NotEmpty(message="A descrição do gênero é obrigatório!")
 	private String descricao;
 	
+	@JsonIgnoreProperties("genero")
 	@OneToMany(mappedBy="genero")
 	private List<Filme> filmes;
 	

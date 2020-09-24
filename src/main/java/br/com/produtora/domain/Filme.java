@@ -13,6 +13,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Filme {
 	
@@ -33,10 +35,13 @@ public class Filme {
 	@NotEmpty(message="A sinopse do filme é obrigatória!")
 	private String sinopse;
 	
+	@JsonIgnoreProperties("filmes")
 	@NotNull(message="O gênero do filme é obrigatória!")
 	@OneToOne
 	private Genero genero;
 	
+	@JsonIgnoreProperties("filmes")
+	@NotNull(message="O filme não pode ser criado sem nenhum ator!")
 	@ManyToMany
 	private List<Ator> atores;
 

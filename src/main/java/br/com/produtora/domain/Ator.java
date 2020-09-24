@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Ator {
 
@@ -35,6 +37,7 @@ public class Ator {
 	@NotEmpty(message="A biografia do ator é obrigatória!")
 	private String biografia;
 	
+	@JsonIgnoreProperties("atores")
 	@ManyToMany(mappedBy="atores")
 	private List<Filme> filmes;
 
